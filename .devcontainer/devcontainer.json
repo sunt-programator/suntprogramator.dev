@@ -1,0 +1,31 @@
+{
+  "name": "suntprogramator.dev",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "mounts": [
+    {
+      "source": "/etc/ssl/certs/ca-certificates.crt",
+      "target": "/etc/ssl/certs/ca-certificates.crt",
+      "type": "bind"
+    }
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "vscode-icons-team.vscode-icons",
+        "eamodio.gitlens",
+        "pflannery.vscode-versionlens",
+        "streetsidesoftware.code-spell-checker",
+        "ronnidc.nunjucks"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+      }
+    }
+  },
+  "containerEnv": {
+    "NODE_EXTRA_CA_CERTS": "/etc/ssl/certs/ca-certificates.crt"
+  }
+}
