@@ -7,6 +7,8 @@ const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
+const pluginWebc = require("@11ty/eleventy-plugin-webc");
+
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
 
@@ -29,6 +31,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginImages);
 
   // Official plugins
+  eleventyConfig.addPlugin(pluginWebc);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
@@ -40,9 +43,7 @@ module.exports = function (eleventyConfig) {
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
-      format || "dd LLLL yyyy"
-    );
+    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
   });
 
   eleventyConfig.addFilter("htmlDateString", (dateObj) => {
@@ -77,9 +78,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-    return (tags || []).filter(
-      (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
-    );
+    return (tags || []).filter((tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
   });
 
   // Customize Markdown library settings:

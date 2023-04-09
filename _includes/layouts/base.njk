@@ -24,14 +24,21 @@
 		{#- Add an arbitrary string to the bundle #}
 		{%- css %}* { box-sizing: border-box; }{% endcss %}
 		{#- Add the contents of a file to the bundle #}
-		{%- css %}{% include "public/css/index.css" %}{% endcss %}
+		{%- css %}
+			{% include "public/css/theme/tokens.css" %}
+			{% include "public/css/theme/colors.module.css" %}
+			{% include "public/css/theme/typography.module.css" %}
+			{% include "public/css/theme/theme.light.css" %}
+			{% include "public/css/theme/theme.dark.css" %}
+			{% include "public/css/index.css" %}
+		{% endcss %}
 		{#- Or add from node_modules #}
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
 		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
 		<style>{% getBundle "css" %}</style>
 	</head>
-	<body>
+	<body class="background on-background-text">
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header>
@@ -54,6 +61,7 @@
 
 		<footer></footer>
 
+		<script type="module" src="/js/bundle-material-web.js"></script>
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
 	</body>
 </html>
