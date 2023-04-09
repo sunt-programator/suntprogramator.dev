@@ -1,0 +1,12 @@
+---
+permalink: fonts/roboto/font.css
+---
+
+{% set css %}
+  {% include "../node_modules/@fontsource/roboto/400.css" %}
+  {% include "../node_modules/@fontsource/roboto/500.css" %}
+{% endset %}
+
+<style>
+  {{ css | cssmin | safe }}
+</style>

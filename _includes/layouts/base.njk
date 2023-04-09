@@ -13,6 +13,8 @@
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		<meta name="generator" content="{{ eleventy.generator }}">
 
+		<link rel="preload" href="/fonts/roboto/font.css" as="style" >
+
 		{#-
 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
 		1. You can add to them using `{% css %}`
@@ -32,6 +34,7 @@
 			{% include "public/css/theme/theme.dark.css" %}
 			{% include "public/css/index.css" %}
 		{% endcss %}
+		
 		{#- Or add from node_modules #}
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 

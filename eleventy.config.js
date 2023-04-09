@@ -7,10 +7,13 @@ const pluginBundle = require("@11ty/eleventy-plugin-bundle");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
-const pluginWebc = require("@11ty/eleventy-plugin-webc");
-
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
+
+const pluginWebc = require("@11ty/eleventy-plugin-webc");
+const CleanCSS = require("clean-css");
+const postcss = require("postcss");
+const postcssNested = require("postcss-nested");
 
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
@@ -18,6 +21,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
     "./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
+    "./node_modules/@fontsource/roboto/files/": "/fonts/roboto/files/",
   });
 
   // Run Eleventy when these files change:
@@ -38,9 +42,24 @@ module.exports = function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(pluginNavigation);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-  eleventyConfig.addPlugin(pluginBundle);
+  eleventyConfig.addPlugin(pluginBundle, {
+    transforms: [
+      async function (content) {
+        if (this.type === "css") {
+          const result = await postcss([postcssNested]).process(content, { from: this.page.inputPath, to: null });
+          return new CleanCSS({}).minify(result.css).styles;
+        }
+
+        return content;
+      },
+    ],
+  });
 
   // Filters
+  eleventyConfig.addFilter("cssmin", function (code) {
+    return new CleanCSS({}).minify(code).styles;
+  });
+
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
     return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(format || "dd LLLL yyyy");
