@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "The official blog of Sunt Programator",
   "scripts": {
-    "build": "concurrently -n w: npm:build:*",
+    "clean": "rimraf _site/",
+    "build": "concurrently npm:clean npm:build:rollup npm:build:eleventy",
     "build:eleventy": "npx @11ty/eleventy",
     "build:rollup": "npx rollup -c",
     "build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
-    "start": "concurrently npm:build:rollup npm:start:eleventy",
+    "start": "concurrently npm:clean npm:build:rollup npm:start:eleventy",
     "start:eleventy": "npx @11ty/eleventy --serve --quiet",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
     "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
@@ -49,10 +50,14 @@
     "clean-css": "^5.3.2",
     "concurrently": "^8.0.1",
     "luxon": "^3.3.0",
+    "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
+    "markdown-it-attrs": "^4.1.6",
+    "markdown-it-footnote": "^3.0.3",
     "postcss": "^8.4.21",
     "postcss-nested": "^6.0.1",
     "prettier": "^2.8.7",
+    "rimraf": "^5.0.0",
     "rollup": "^3.20.2"
   }
 }

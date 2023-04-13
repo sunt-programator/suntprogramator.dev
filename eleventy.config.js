@@ -1,5 +1,7 @@
 const { DateTime } = require("luxon");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItAttrs = require("markdown-it-attrs");
+let markdownItFootnote = require("markdown-it-footnote");
 
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -24,11 +26,15 @@ module.exports = function (eleventyConfig) {
     "./node_modules/@fontsource/roboto/files/": "/fonts/roboto/files/",
   });
 
+  // TODO: add a video plugin
+  eleventyConfig.addPassthroughCopy("**/*.mp4");
+  eleventyConfig.addPassthroughCopy("**/*.gif");
+
   // Run Eleventy when these files change:
   // https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets
 
   // Watch content images for the image pipeline.
-  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+  eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg,gif,mp4}");
 
   // App plugins
   eleventyConfig.addPlugin(pluginDrafts);
@@ -102,16 +108,19 @@ module.exports = function (eleventyConfig) {
 
   // Customize Markdown library settings:
   eleventyConfig.amendLibrary("md", (mdLib) => {
-    mdLib.use(markdownItAnchor, {
-      permalink: markdownItAnchor.permalink.ariaHidden({
-        placement: "after",
-        class: "header-anchor",
-        symbol: "#",
-        ariaHidden: false,
-      }),
-      level: [1, 2, 3, 4],
-      slugify: eleventyConfig.getFilter("slugify"),
-    });
+    mdLib
+      .use(markdownItFootnote)
+      .use(markdownItAttrs)
+      .use(markdownItAnchor, {
+        permalink: markdownItAnchor.permalink.ariaHidden({
+          placement: "after",
+          class: "header-anchor",
+          symbol: "#",
+          ariaHidden: false,
+        }),
+        level: [1, 2, 3, 4],
+        slugify: eleventyConfig.getFilter("slugify"),
+      });
   });
 
   // Features to make your build faster (when you need them)
