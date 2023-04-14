@@ -27,6 +27,7 @@
 		{%- css %}* { box-sizing: border-box; }{% endcss %}
 		{#- Add the contents of a file to the bundle #}
 		{%- css %}
+			{% include "node_modules/the-new-css-reset/css/reset.css" %}
 			{% include "public/css/theme/tokens.css" %}
 			{% include "public/css/theme/colors.module.css" %}
 			{% include "public/css/theme/typography.module.css" %}
