@@ -1,1 +1,1 @@
-import "@material/web/button/text-link-button.js";
+import "@material/web/button/text-button.js";
