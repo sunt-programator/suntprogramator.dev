@@ -11,6 +11,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 const pluginDrafts = require("./eleventy.config.drafts.js");
 const pluginImages = require("./eleventy.config.images.js");
+const mathjaxPlugin = require("@sunt-programator/eleventy-plugin-mathjax");
 
 const pluginWebc = require("@11ty/eleventy-plugin-webc");
 const CleanCSS = require("clean-css");
@@ -60,6 +61,9 @@ module.exports = function (eleventyConfig) {
       },
     ],
   });
+
+  // Custom plugins
+  eleventyConfig.addPlugin(mathjaxPlugin);
 
   // Filters
   eleventyConfig.addFilter("cssmin", function (code) {

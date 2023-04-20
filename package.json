@@ -2,6 +2,7 @@
   "name": "suntprogramator.dev",
   "version": "1.0.0",
   "description": "The official blog of Sunt Programator",
+  "private": "true",
   "scripts": {
     "clean": "rimraf _site/",
     "build": "concurrently npm:clean npm:build:rollup npm:build:eleventy",
@@ -47,6 +48,7 @@
     "@fontsource/roboto": "^4.5.8",
     "@material/web": "1.0.0-pre.6",
     "@rollup/plugin-node-resolve": "^15.0.2",
+    "@sunt-programator/eleventy-plugin-mathjax": "^1.0.1",
     "clean-css": "^5.3.2",
     "concurrently": "^8.0.1",
     "luxon": "^3.3.0",

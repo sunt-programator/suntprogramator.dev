@@ -26,7 +26,7 @@ Proiectarea evolventei o vom realiza cu ajutorul [LaTeX](https://en.wikipedia.or
     <figcaption>Demonstrare grafică cum evolventa funcționează.</figcaption>
 </figure>
 
-$\LaTeX$ este bine cunoscut pentru abilitatea sa de lucru cu texte matematice, științifice și alte lucrări complexe: documente lungi sau complicate, precum și cele multilingve. Sistemele $\TeX$ produc rezultatul pe hârtie sau pe ecranul computerului cu cea mai înaltă calitate tipografică. Această calitate este crucială pentru textele complexe, unde capacitatea cititorului de a înțelege materialul depinde de claritatea cu care acesta este prezentat [^tex-friends].
+\\(\LaTeX\\) este bine cunoscut pentru abilitatea sa de lucru cu texte matematice, științifice și alte lucrări complexe: documente lungi sau complicate, precum și cele multilingve. Sistemele \\(\TeX\\) produc rezultatul pe hârtie sau pe ecranul computerului cu cea mai înaltă calitate tipografică. Această calitate este crucială pentru textele complexe, unde capacitatea cititorului de a înțelege materialul depinde de claritatea cu care acesta este prezentat [^tex-friends].
 
 Codul complet al proiectării evolventei unui cerc îl găsiți mai jos sau pe [repository-ul Github](https://github.com/sunt-programator/latex-workpapers/blob/master/involute-of-circle/involute-demo.tex). În continuare vom explica mai detaliat utilitatea fiecărei secțiuni de cod.
 
@@ -178,7 +178,7 @@ Dacă au fost efectuate configurările corecte, atunci la pornirea aplicației V
 
 Pentru început este necesar de a crea un fișier cu extensia `.tex`. Toate instrucțiunile necesare pentru construirea evolventei vor fi scrise în acesta.
 
-Când $\LaTeX$ procesează un document, el se așteaptă ca documentul să conțină o anumită structură. Astfel, fiecare document trebuie să conțină comenzile:
+Când \\(\LaTeX\\) procesează un document, el se așteaptă ca documentul să conțină o anumită structură. Astfel, fiecare document trebuie să conțină comenzile:
 
 ```latex
 \documentclass{...}
@@ -267,7 +267,7 @@ Ca să construim animația evolventei unui cerc, vom proceda astfel. Prin comand
 }
 ```
 
-Pentru construirea evolventei vom folosi `radiani` în loc de `grade`. În ciclul `foreach` vedem că unghiul de depanare începe de la $ \psi_a = 0.05 rad $ și se termină cu $ \psi_b = 3.25 rad $. Pasul de la iterație la iterație este de $ \psi_i = 0.05 rad $. Putem cu aceste date prealabil să calculăm numărul de cadre care vor fi în final.
+Pentru construirea evolventei vom folosi `radiani` în loc de `grade`. În ciclul `foreach` vedem că unghiul de depanare începe de la \\( \psi_a = 0.05 rad \\) și se termină cu \\( \psi_b = 3.25 rad \\). Pasul de la iterație la iterație este de \\( \psi_i = 0.05 rad \\). Putem cu aceste date prealabil să calculăm numărul de cadre care vor fi în final.
 
 $$
 \frac{\psi_b - \psi_a}{\psi_i} = \frac{3.25 - 0.05}{0.05} = 64
@@ -295,7 +295,7 @@ Ca opțiune a mediului `tikzpicture` vom determina funcțiile necesare pentru co
 
 > În matematică, o ecuație parametrică definește un grup de cantități ca funcții ale uneia sau mai multor variabile independente numite parametri. Ecuațiile parametrice sunt utilizate în mod obișnuit pentru a exprima coordonatele punctelor care alcătuiesc un obiect geometric, cum ar fi o curbă sau o suprafață, caz în care ecuațiile sunt denumite colectiv reprezentare parametrică sau parametrizare a obiectului [^parametric-equation-wiki].
 
-Ecuațiile parametrice pentru reprezentarea grafică a evolventei sunt indicate mai jos, unde $r$ este raza cercului și $\psi$ -- unghiul de "depanare a aței de pe mosor" 😄.
+Ecuațiile parametrice pentru reprezentarea grafică a evolventei sunt indicate mai jos, unde \\(r\\) este raza cercului și \\(\psi\\) -- unghiul de "depanare a aței de pe mosor" 😄.
 
 $$
 x = r(\cos\psi + \psi\sin\psi)
@@ -305,14 +305,14 @@ $$
 y = r(\sin\psi - \psi\cos\psi)
 $$
 
-Celelalte două ecuații parametrice le vom folosi pentru a desena arcuri de cerc pe grafic, unde $r$ iarăși este raza cercului, $\psi$ -- unghiul arcului de cerc, iar $x_{\tiny 0}$ și $y_{\tiny 0}$ sunt coordonatele centrului cercului, în cazul în care acesta nu se află în origine.
+Celelalte două ecuații parametrice le vom folosi pentru a desena arcuri de cerc pe grafic, unde \\(r\\) iarăși este raza cercului, \\(\psi\\) -- unghiul arcului de cerc, iar \\(x_0\\) și \\(y_0\\) sunt coordonatele centrului cercului, în cazul în care acesta nu se află în origine.
 
 $$
-x = x_{\tiny 0} + r \cos\psi
+x = x_0 + r \cos\psi
 $$
 
 $$
-y = y_{\tiny 0} + r \sin\psi
+y = y_0 + r \sin\psi
 $$
 
 ### Adaugarea variabilelor suplimentare {% raw %}{#additional-variables}{% endraw %}
@@ -404,13 +404,13 @@ Aceste opțiuni permit atribuirea etichetelor pentru fiecare pas a axei (segment
 
 ### Adăugarea coordonatelor necesare pe grafic {% raw %}{#coordonates}{% endraw %}
 
-În continuare, vom adăuga 3 coordonate pe grafic, și anume $O$, $L_{\tiny 1}$ și $L_{\tiny 2}$. Aceste coordonate ne vor permite să trasăm segmente.
+În continuare, vom adăuga 3 coordonate pe grafic, și anume \\(O\\), \\(L_1\\) și \\(L_2\\). Aceste coordonate ne vor permite să trasăm segmente.
 
 Sintaxa de adăugare a coordonatei pe grafic este următoarea:
 
 `\coordonate[<options>] (<name>) at (<coordonate>);`
 
-Deci, coordonatele $O$, $L_{\tiny 1}$ și $L_{\tiny 2}$ vor fi adaugate astfel:
+Deci, coordonatele \\(O\\), \\(L_1\\) și \\(L_2\\) vor fi adaugate astfel:
 
 ```latex
 \coordonate (O) at (0,0);
@@ -418,13 +418,13 @@ Deci, coordonatele $O$, $L_{\tiny 1}$ și $L_{\tiny 2}$ vor fi adaugate astfel:
 \coordonate (L2) at ({involutex(\radius,\rollAngle)},{involutey(\radius,\rollAngle)});
 ```
 
-Segmentul $OL_{\tiny 1}$ va reprezenta raza cercului, iar unghiul dintre acest segment și segmentul $[0,r]$ va fi însăși unghiul de depanare.
+Segmentul \\(OL_1\\) va reprezenta raza cercului, iar unghiul dintre acest segment și segmentul \\([0,r]\\) va fi însăși unghiul de depanare.
 
-Segmentul $L_{\tiny 1}L_{\tiny 2}$ va reprezenta tangenta cercului, pornind de la perpendiculară spre punctul maxim al evolventei (calculând valorile ecuațiilor parametrice, unde $\psi$ va fi egal cu valoarea curentă a variabilei `\rollAngle`).
+Segmentul \\(L_1L_2\\) va reprezenta tangenta cercului, pornind de la perpendiculară spre punctul maxim al evolventei (calculând valorile ecuațiilor parametrice, unde \\(\psi\\) va fi egal cu valoarea curentă a variabilei `\rollAngle`).
 
 <figure>
   {% image "./assets/involute-demo-coords.png", "Coordonatele O, L1 și L2 pe grafic." %}
-  <figcaption>Coordonatele $O$, $L_1$ și $L_2$ pe grafic.</figcaption>
+  <figcaption>Coordonatele \\(O\\), \\(L_1\\) și \\(L_2\\) pe grafic.</figcaption>
 </figure>
 
 ### Proiectarea arcului de cerc rămas după depanare {% raw %}{#remaining-arc-circle-plot}{% endraw %}
@@ -456,9 +456,9 @@ Opțiunile setate la construirea graficului le vom desfășura în continuare, e
 
 #### Opțiunea _domain_ {% raw %}{#domain-option}{% endraw %}
 
-Această opțiune ne permite de a seta domeniul de definiție al funcției. Expresiile graficelor bidimensionale sunt definite ca funcții $f: [x_{\tiny 1},x_{\tiny 2}] \to \mathbb{R}$ și $\langle x_{\tiny 1} \rangle$ și $\langle x_{\tiny 2} \rangle$ sunt setate cu opțiunea `domain` [^pgfplots-ctan-55].
+Această opțiune ne permite de a seta domeniul de definiție al funcției. Expresiile graficelor bidimensionale sunt definite ca funcții \\(f: [x_1,x_2] \to \mathbb{R}\\) și \\(\langle x_1 \rangle\\) și \\(\langle x_2 \rangle\\) sunt setate cu opțiunea `domain` [^pgfplots-ctan-55].
 
-În cazul nostru, domeniul de definiție este $f: [2\pi:\psi] \to \mathbb{R}$, unde $\psi$ este unghiul curent de depanare, egal cu valoarea variabilei `\rollAngle`.
+În cazul nostru, domeniul de definiție este \\(f: [2\pi:\psi] \to \mathbb{R}\\), unde \\(\psi\\) este unghiul curent de depanare, egal cu valoarea variabilei `\rollAngle`.
 
 Cu alte cuvinte, de la iterație la iterație cercul va pierde o parte din el. Unghiul arcului de cerc eliminat din cerc va corespunde cu valoarea `\rollAngle`.
 
@@ -497,7 +497,7 @@ Pentru reprezentarea grafică a tuturor ecuațiilor parametrice, vom folosi term
 
 Prin comanda de mai jos, vom construi la fiecare iterație un arc de cerc punctat (opțiunea `dashedLineColor`), care va reprezenta unghiul de depanare al evolventei pe cerc.
 
-Acest arc de cerc va avea domeniul de definiție exact invers cu cel [anterior](#domain-option), adică $f: [0:\psi] \to \mathbb{R}$.
+Acest arc de cerc va avea domeniul de definiție exact invers cu cel [anterior](#domain-option), adică \\(f: [0:\psi] \to \mathbb{R}\\).
 
 ```latex
 \addplot [domain=0:\rollAngle,samples=200,dashedLineColor,dashed,line cap=round]({arcx(\radius,0,x)},{arcy(\radius,0,x)});
@@ -553,7 +553,7 @@ Linia aceasta va reprezenta acea "ață", pe care o depănăm de pe mosor 🧵. 
 Tot cu aceeași sintaxă vom proiecta raza cercului care se va roti odată cu mărirea unghiului de depanare.
 
 ```latex
-\draw[dashedLineColor,dashed] (O) -- (L1) node [accentColor,pos=0.5,sloped,above] {$r$};
+\draw[dashedLineColor,dashed] (O) -- (L1) node [accentColor,pos=0.5,sloped,above] {\\(r\\)};
 ```
 
 Rezultatul îl putem vedea în animația de mai jos, însă opțiunile pe care le-am setat la nod, le vom desfășura în secțiunile următoare.
@@ -567,9 +567,9 @@ Rezultatul îl putem vedea în animația de mai jos, însă opțiunile pe care l
 
 #### Opțiunea _/tikz/pos_ {% raw %}{#pos-option}{% endraw %}
 
-Opțiunea `/tikz/pos=<fraction>` ancorează nodul pe un anumit punct de pe linie de la coordonata anterioară la acea actuală. `<fraction>` dictează cât de "departe" trebuie să fie punctul pe linie. `<fraction>` setat ca $0$ reprezintă coordonata anterioară, $1$ este cea curentă, iar toate celelalte valori vor fi între ele. În special, $0.5$ reprezintă mijlocul liniei [^tikz-ctan-246].
+Opțiunea `/tikz/pos=<fraction>` ancorează nodul pe un anumit punct de pe linie de la coordonata anterioară la acea actuală. `<fraction>` dictează cât de "departe" trebuie să fie punctul pe linie. `<fraction>` setat ca \\(0\\) reprezintă coordonata anterioară, \\(1\\) este cea curentă, iar toate celelalte valori vor fi între ele. În special, \\(0.5\\) reprezintă mijlocul liniei [^tikz-ctan-246].
 
-Noi vom seta valoarea $0.5$, ceea ce va însemna că nodul se afla la mijloc de linie. Același lucru îl putem face cu opțiunea `/tikz/midway`, care este echivalentul opțiunii `pos=0.5`.
+Noi vom seta valoarea \\(0.5\\), ceea ce va însemna că nodul se afla la mijloc de linie. Același lucru îl putem face cu opțiunea `/tikz/midway`, care este echivalentul opțiunii `pos=0.5`.
 
 #### Opțiunea _/tikz/sloped_ {% raw %}{#slopped-option}{% endraw %}
 
@@ -580,7 +580,7 @@ Opțiunea `/tikz/sloped` face ca nodul să fie rotit, astfel încât linia orizo
   <figcaption>Opțiunea `/tikz/sloped` din pachetul TikZ. Credits: <a href="http://ctan.mirror.ftn.uns.ac.rs/graphics/pgf/base/doc/pgfmanual.pdf" target="_blank" rel="noopener noreffer">CTAN</a></figcaption>
 </figure>
 
-În cazul nostru avem nu o curbă, ci o linie și textul trebuie să se rotească odată cu rotirea liniei. La momentul când unghiul de depanare va depăși $\frac{\pi}{2}$ radiani sau $90^{\circ}$, această opțiune nu va permite ca textul să fie inversat (cu susul în jos).
+În cazul nostru avem nu o curbă, ci o linie și textul trebuie să se rotească odată cu rotirea liniei. La momentul când unghiul de depanare va depăși \\(\frac{\pi}{2}\\) radiani sau \\(90^{\circ}\\), această opțiune nu va permite ca textul să fie inversat (cu susul în jos).
 
 #### Opțiunea _/tikz/above_ {% raw %}{#above-option}{% endraw %}
 
@@ -588,13 +588,13 @@ Această opțiune este echivalentă cu opțiunea `/tikz/anchor=south` și permit
 
 ### Proiectarea unghiului arcului de cerc depanat {% raw %}{#involute-angle-plotting}{% endraw %}
 
-La această etapă, vom proiecta unghiul arcului de cerc depanat. Pentru aceasta, vom utiliza comanda `\addplot`, sintaxa căreia am desfășurat-o în una din [secțiunile anterioare](#remaining-arc-circle-plot). Unica diferență este că aici adăugăm un nod fix poziționat în punctul $(0.5,-0.3)$ cu textul $\psi$.
+La această etapă, vom proiecta unghiul arcului de cerc depanat. Pentru aceasta, vom utiliza comanda `\addplot`, sintaxa căreia am desfășurat-o în una din [secțiunile anterioare](#remaining-arc-circle-plot). Unica diferență este că aici adăugăm un nod fix poziționat în punctul \\((0.5,-0.3)\\) cu textul \\(\psi\\).
 
 ```latex
 \addplot [domain=0:\rollAngle,samples=200,accentColor,line cap=round]({arcx(.4,0,x)},{arcy(.4,0,x)}) node[] at (.5, -.3) {$\psi$};
 ```
 
-Desigur că $\LaTeX$ dispune de o gamă largă de pachete pentru desenarea unghiurilor (cum ar fi pachetul [tkz-euclide](http://ctan.mirror.ftn.uns.ac.rs/macros/latex/contrib/tkz/tkz-euclide/doc/TKZdoc-euclide.pdf)), însă vom merge pe calea proiectării aceluiași arc de cerc, numai că cu o rază mai mică.
+Desigur că \\(\LaTeX\\) dispune de o gamă largă de pachete pentru desenarea unghiurilor (cum ar fi pachetul [tkz-euclide](http://ctan.mirror.ftn.uns.ac.rs/macros/latex/contrib/tkz/tkz-euclide/doc/TKZdoc-euclide.pdf)), însă vom merge pe calea proiectării aceluiași arc de cerc, numai că cu o rază mai mică.
 
 <figure>
     <video controls style="width: 70%;max-height: 100%;">
@@ -649,7 +649,7 @@ Nodurile sunt probabil cele mai universale elemente din `TikZ`. Un nod este de o
   <figcaption>Ancore poziționate pe caseta de delimitare a axei din pachetul TikZ. Credits: <a href="http://ctan.mirror.ftn.uns.ac.rs/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf" target="_blank" rel="noopener noreffer">CTAN</a></figcaption>
 </figure>
 
-Opțiunea `xshift=.5cm` permite de a executa translația casetei pe axa $x$ cu `0.5cm`, `below right` -- poziționarea casetei în dreapta sub coordonata setată anterior și cu luarea în considerare a translației efectuate.
+Opțiunea `xshift=.5cm` permite de a executa translația casetei pe axa \\(x\\) cu `0.5cm`, `below right` -- poziționarea casetei în dreapta sub coordonata setată anterior și cu luarea în considerare a translației efectuate.
 
 Opțiunea `/tikz/text width=6cm` va plasa textul nodului într-o casetă de `6cm` lățime. Dacă lățimea textului va depăși această limită, atunci se va întrerupe linia și se va trece conținutul rămas din rând nou.
 
@@ -713,7 +713,7 @@ ffmpeg -r 15 -i involute-of-circle/output/image_%02d.png -c:v libx264 -vf fps=60
 
 ## Concluzie {% raw %}{#conclusion}{% endraw %}
 
-$\LaTeX$ este un sistem avansat de preparare a documentului. Acesta dispune de un număr larg de pachete care permit realizarea unor sarcini complexe.
+\\(\LaTeX\\) este un sistem avansat de preparare a documentului. Acesta dispune de un număr larg de pachete care permit realizarea unor sarcini complexe.
 
 În acest articol am folosit pachetul `PGFPlots` (care la rândul său foloseste pachetul `TikZ`), pentru a proiecta evolventa unui cerc.
 
