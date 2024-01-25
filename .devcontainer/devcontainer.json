@@ -1,0 +1,40 @@
+{
+  "name": "suntprogramator.dev",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "css.customData": [
+          "./vscode.tailwind.json"
+        ],
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "astro", // Enable .astro
+          "typescript", // Enable .ts
+          "typescriptreact" // Enable .tsx
+        ],
+        "files.associations": {
+          "*.mdx": "markdown"
+        },
+        "prettier.documentSelectors": [
+          "**/*.astro"
+        ],
+        "[astro]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "yaml.schemas": {
+          "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
+        }
+      },
+      "extensions": [
+        "astro-build.astro-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "unifiedjs.vscode-mdx",
+        "vscode-icons-team.vscode-icons"
+      ]
+    }
+  }
+}
